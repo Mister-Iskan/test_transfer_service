@@ -7,11 +7,7 @@ from database import users_db, balances_db, id_counter
 from schemas import UserCreate, UserResponse, TransferObject, BulkUserCreationResponse, SkippedUser
 from services import Users, Transfer, BusinessLogicError
 
-app = FastAPI(
-    title="User Balance Management API",
-    description="Тестовое задание для управления пользователями и их балансом.",
-    version="1.0.3"
-)
+app = FastAPI()
 
 
 @app.post("/users", response_model=BulkUserCreationResponse, status_code=status.HTTP_200_OK)
@@ -84,3 +80,4 @@ def make_transfer(transfer_data: TransferObject):
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
+
